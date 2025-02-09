@@ -1,0 +1,12 @@
+{
+  "home_screen": {
+    "tab_name": "홈",
+    "welcome": "환영합니다!",
+    "step_1_title": "1단계: 시도해보세요",
+    "step_1_description": "app/(tabs)/index.tsx 파일을 수정하여 변경 사항을 확인하세요. 개발자 도구를 열려면 {key}를 누르세요.",
+    "step_2_title": "2단계: 탐색하기",
+    "step_2_description": "탐색 탭을 눌러 이 스타터 앱에 포함된 내용을 더 알아보세요.",
+    "step_3_title": "3단계: 새로 시작하기",
+    "step_3_description": "준비가 되면 npm run reset-project 명령을 실행하여 새로운 app 디렉토리를 생성하세요. 현재 app 디렉토리는 app-example로 이동됩니다."
+  }
+}
