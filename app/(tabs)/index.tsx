@@ -7,12 +7,10 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
-import "@/src/i18n";
 import { useTranslation } from "react-i18next";
-import i18n from "@/src/i18n";
 
 export default function HomeScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLanguageChange = async (language: string) => {
     try {

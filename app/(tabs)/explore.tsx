@@ -1,16 +1,19 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, Image, Platform } from "react-native";
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Collapsible } from "@/components/Collapsible";
+import { ExternalLink } from "@/components/ExternalLink";
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { useTranslation } from "react-i18next";
 
 export default function TabTwoScreen() {
+  const { t } = useTranslation();
+
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
         <IconSymbol
           size={310}
@@ -18,75 +21,68 @@ export default function TabTwoScreen() {
           name="chevron.left.forwardslash.chevron.right"
           style={styles.headerImage}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
+        <ThemedText type="title">{t("explore_screen.tab_name")}</ThemedText>
       </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
+      <ThemedText>{t("explore_screen.description")}</ThemedText>
+
+      <Collapsible title={t("explore_screen.file_based_routing_title")}>
         <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
+          {t("explore_screen.file_based_routing_description")}
         </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
+        <ThemedText>{t("explore_screen.layout_file_description")}</ThemedText>
         <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
+          <ThemedText type="link">
+            {t("explore_screen.file_based_routing_link")}
           </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-      <Collapsible title="Light and dark mode components">
+
+      <Collapsible title={t("explore_screen.android_ios_web_support_title")}>
         <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
+          {t("explore_screen.android_ios_web_support_description")}
+        </ThemedText>
+      </Collapsible>
+
+      <Collapsible title={t("explore_screen.images_title")}>
+        <ThemedText>{t("explore_screen.images_description")}</ThemedText>
+        <Image
+          source={require("@/assets/images/react-logo.png")}
+          style={{ alignSelf: "center" }}
+        />
+        <ExternalLink href="https://reactnative.dev/docs/images">
+          <ThemedText type="link">{t("explore_screen.images_link")}</ThemedText>
+        </ExternalLink>
+      </Collapsible>
+
+      <Collapsible title={t("explore_screen.custom_fonts_title")}>
+        <ThemedText>{t("explore_screen.custom_fonts_description")}</ThemedText>
+        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
+          <ThemedText type="link">
+            {t("explore_screen.custom_fonts_link")}
+          </ThemedText>
+        </ExternalLink>
+      </Collapsible>
+
+      <Collapsible title={t("explore_screen.light_dark_mode_title")}>
+        <ThemedText>
+          {t("explore_screen.light_dark_mode_description")}
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
+          <ThemedText type="link">
+            {t("explore_screen.light_dark_mode_link")}
+          </ThemedText>
         </ExternalLink>
       </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
+
+      <Collapsible title={t("explore_screen.animations_title")}>
+        <ThemedText>{t("explore_screen.animations_description")}</ThemedText>
         {Platform.select({
           ios: (
             <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
+              {t("explore_screen.parallax_effect_description")}
             </ThemedText>
           ),
         })}
@@ -97,13 +93,13 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: '#808080',
+    color: "#808080",
     bottom: -90,
     left: -35,
-    position: 'absolute',
+    position: "absolute",
   },
   titleContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
   },
 });

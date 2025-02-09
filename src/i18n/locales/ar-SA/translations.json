@@ -8,5 +8,27 @@
     "step_2_description": "اضغط على علامة تبويب الاستكشاف لتتعرف على المزيد مما يتضمنه هذا التطبيق المبدئي.",
     "step_3_title": "الخطوة 3: ابدأ من جديد",
     "step_3_description": "عندما تكون مستعدًا، قم بتشغيل npm run reset-project للحصول على دليل جديد باسم app. سيتم نقل الدليل الحالي باسم app إلى app-example."
+  },
+  "explore_screen": {
+    "tab_name": "استكشاف",
+    "description": "يتضمن هذا التطبيق مثالاً على الشيفرة لمساعدتك على البدء.",
+    "file_based_routing_title": "التوجيه المعتمد على الملفات",
+    "file_based_routing_description": "يحتوي هذا التطبيق على شاشتين: app/(tabs)/index.tsx و app/(tabs)/explore.tsx",
+    "layout_file_description": "يعد ملف التخطيط في app/(tabs)/_layout.tsx المسؤول عن إعداد المتصفح التبويبي.",
+    "file_based_routing_link": "تعلم المزيد",
+    "android_ios_web_support_title": "دعم أندرويد، iOS، والويب",
+    "android_ios_web_support_description": "يمكنك فتح هذا المشروع على أندرويد وiOS وعلى الويب. لفتح النسخة على الويب، اضغط على w في الطرفية التي تعمل بها هذا المشروع.",
+    "images_title": "الصور",
+    "images_description": "لصور ثابتة، يمكنك استخدام اللاحقة @2x و @3x لتوفير الملفات لكثافات شاشات مختلفة.",
+    "images_link": "تعلم المزيد",
+    "custom_fonts_title": "الخطوط المخصصة",
+    "custom_fonts_description": "افتح app/_layout.tsx لمعرفة كيفية تحميل الخطوط المخصصة مثل هذا الخط.",
+    "custom_fonts_link": "تعلم المزيد",
+    "light_dark_mode_title": "مكونات الوضع الفاتح والداكن",
+    "light_dark_mode_description": "تدعم هذه القالب الوضعين الفاتح والداكن. يتيح لك هوك useColorScheme() فحص اللون الذي يستخدمه المستخدم الحالي، وبالتالي يمكنك تعديل ألوان واجهة المستخدم وفقًا لذلك.",
+    "light_dark_mode_link": "تعلم المزيد",
+    "animations_title": "الحركات",
+    "animations_description": "يتضمن هذا القالب مثالاً على مكون متحرك. يستخدم مكون components/HelloWave.tsx مكتبة react-native-reanimated القوية لإنشاء حركة يد ملوحة.",
+    "parallax_effect_description": "يوفر مكون components/ParallaxScrollView.tsx تأثير بارالكس لصورة الرأس."
   }
 }
