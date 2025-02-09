@@ -1,11 +1,41 @@
 import { Image, StyleSheet, Platform, Pressable } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { I18nManager } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
+import "@/src/i18n";
+import { useTranslation } from "react-i18next";
+import i18n from "@/src/i18n";
+
 export default function HomeScreen() {
+  const { t } = useTranslation();
+
+  const handleLanguageChange = async (language: string) => {
+    try {
+      const RTL_LANGUAGES = ["ar", "ar-SA"];
+      const LANGUAGE_KEY = "@app_language";
+
+      // Handle RTL layout
+      const isRTL = RTL_LANGUAGES.includes(language);
+      if (I18nManager.isRTL !== isRTL) {
+        I18nManager.allowRTL(isRTL);
+        I18nManager.forceRTL(isRTL);
+      }
+
+      // Change language
+      await i18n.changeLanguage(language);
+
+      // Save preference
+      await AsyncStorage.setItem(LANGUAGE_KEY, language);
+    } catch (error) {
+      console.error("Error changing language:", error);
+    }
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -17,42 +47,28 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">{t("home_screen.welcome")}</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">{t("home_screen.step_1_title")}</ThemedText>
         <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
+          {t("home_screen.step_1_description", {
+            key: Platform.select({
               ios: "cmd + d",
               android: "cmd + m",
               web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
+            }),
+          })}
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
+        <ThemedText type="subtitle">{t("home_screen.step_2_title")}</ThemedText>
+        <ThemedText>{t("home_screen.step_2_description")}</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        <ThemedText type="subtitle">{t("home_screen.step_3_title")}</ThemedText>
+        <ThemedText>{t("home_screen.step_3_description")}</ThemedText>
       </ThemedView>
       <ThemedView style={styles.flagContainer}>
         <Pressable
@@ -60,7 +76,7 @@ export default function HomeScreen() {
             styles.flagButton,
             pressed && styles.buttonPressed,
           ]}
-          onPress={() => {}}
+          onPress={() => handleLanguageChange("en-US")}
         >
           <ThemedText style={styles.flagText}>🇺🇸</ThemedText>
         </Pressable>
@@ -69,7 +85,7 @@ export default function HomeScreen() {
             styles.flagButton,
             pressed && styles.buttonPressed,
           ]}
-          onPress={() => {}}
+          onPress={() => handleLanguageChange("ko-KR")}
         >
           <ThemedText style={styles.flagText}>🇰🇷</ThemedText>
         </Pressable>
@@ -78,7 +94,7 @@ export default function HomeScreen() {
             styles.flagButton,
             pressed && styles.buttonPressed,
           ]}
-          onPress={() => {}}
+          onPress={() => handleLanguageChange("ar-SA")}
         >
           <ThemedText style={styles.flagText}>🇸🇦</ThemedText>
         </Pressable>
